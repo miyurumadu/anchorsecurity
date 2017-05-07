@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="0b47d3f0-32ce-46e4-8f77-c467490ec356">
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<parameter name="BANK" class="java.lang.String"/>
+	<parameter name="NET" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="Nic Number" class="java.lang.String"/>
+	<field name="Account Number" class="java.lang.String"/>
+	<field name="Net Payment" class="java.lang.String"/>
+	<field name="Name" class="java.lang.String"/>
+	<field name="Number" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="112" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="59" width="53" height="20" uuid="66b98580-b143-412e-b2b4-959621a60a9c"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Month:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="122" y="0" width="311" height="42" uuid="f3a9ae44-1e7d-4efd-93a9-5093100e47dc"/>
+				<textElement>
+					<font size="24" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="135" y="59" width="125" height="20" uuid="1ac91bb0-963a-486f-ac81-2ff2eeef9045"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Salary Payement:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="55" y="62" width="80" height="17" uuid="6dbb9baa-9b13-458a-bb8e-37d31e220ad5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{MONTH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="260" y="61" width="105" height="17" uuid="190f0cd6-196a-4e1e-a768-89d68a236d23"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{BANK}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="191" y="92" width="131" height="20" uuid="a05a12ec-279b-4b90-9e20-5be1bcaad957"/>
+				<text><![CDATA[Nic Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="92" width="152" height="20" uuid="ac6723ad-47ac-48dc-a5b0-2d4678ae9da5"/>
+				<text><![CDATA[Account Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="92" width="79" height="20" uuid="0b5e2647-3c02-4da2-9a18-eaac6f0d9a55"/>
+				<text><![CDATA[Net Payment]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="28" y="92" width="163" height="20" uuid="1e4dbdfe-8a4d-401e-a9b1-45461c59690b"/>
+				<text><![CDATA[Name]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="90" width="1" height="22" uuid="ddebda41-c72d-4b7f-a5e7-ac5f465f2f15"/>
+			</line>
+			<line>
+				<reportElement x="555" y="90" width="1" height="22" uuid="8f1fa352-b770-4e03-88ac-3b5726f137be"/>
+			</line>
+			<staticText>
+				<reportElement x="388" y="61" width="86" height="18" uuid="f9c27b71-38a7-4efe-85b4-911dc1810fdb"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Net Payment:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="475" y="62" width="78" height="16" uuid="10bf5459-1937-49d5-aeaf-5d838b85e45f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NET}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-1" y="56" width="555" height="1" uuid="3f28b96e-c548-4993-adb4-2cc27a106a11"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="87" width="556" height="1" uuid="0bda6a2f-1369-4f6c-ae9c-d46003f49868"/>
+			</line>
+			<line>
+				<reportElement x="555" y="56" width="1" height="36" uuid="310360f5-d085-487f-a765-c31cf1773fc6"/>
+			</line>
+			<line>
+				<reportElement x="0" y="57" width="1" height="35" uuid="bb82c8a1-be09-430e-9ece-11bcce18e67b"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="90" width="26" height="20" uuid="2c3bbd9d-2685-4997-972b-918af07fd9dc"/>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement x="191" y="0" width="132" height="20" uuid="49722f4c-5ab8-4bbe-b406-7d676d1c0804"/>
+				<textFieldExpression><![CDATA[$F{Nic Number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="475" y="0" width="80" height="20" uuid="1adfb9b4-4cdb-4873-b968-8c91c1d1571b"/>
+				<textFieldExpression><![CDATA[$F{Net Payment}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="da8b4415-6db5-435f-bfdd-0bc158b34bd8"/>
+			</line>
+			<textField>
+				<reportElement x="28" y="1" width="163" height="20" uuid="88002a1b-1d93-447d-9893-7de1d9a7b467"/>
+				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="323" y="0" width="151" height="20" uuid="e4b518a2-1c9d-44db-8abc-c3ccc998b4c9"/>
+				<textFieldExpression><![CDATA[$F{Account Number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="1" width="27" height="20" uuid="80321319-5ef2-4c1d-a6cd-c5aab2d8129c"/>
+				<textFieldExpression><![CDATA[$F{Number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="228" y="14" width="98" height="13" uuid="3b6eb9fb-c10c-493a-8e08-a0e66fc013c2"/>
+				<text><![CDATA[255B,Karappankadu,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="135" height="14" uuid="68f7ec61-9f88-4b74-b39e-2c78a09c93f3"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="27" width="70" height="13" uuid="bb48297d-6aac-4e4c-8e0f-8e71f7374c55"/>
+				<text><![CDATA[Vavuniya]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

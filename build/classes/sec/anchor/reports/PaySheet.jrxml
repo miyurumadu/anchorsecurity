@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="396" pageHeight="612" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="392" leftMargin="2" rightMargin="2" topMargin="2" bottomMargin="2" isIgnorePagination="true" uuid="61b8eefe-aaf6-4d83-af24-b6b6fd7935e1">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="11"/>
+	<parameter name="NAME" class="java.lang.String"/>
+	<parameter name="BASIC" class="java.lang.String"/>
+	<parameter name="NIC" class="java.lang.String"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<parameter name="OTHERAL" class="java.lang.String"/>
+	<parameter name="OT" class="java.lang.String"/>
+	<parameter name="BUDGETAL" class="java.lang.String"/>
+	<parameter name="EPFEMP" class="java.lang.String"/>
+	<parameter name="TOTAL" class="java.lang.String"/>
+	<parameter name="TOTALD" class="java.lang.String"/>
+	<parameter name="NETSAL" class="java.lang.String"/>
+	<parameter name="UNIFORM" class="java.lang.String"/>
+	<parameter name="FINE" class="java.lang.String"/>
+	<parameter name="ADVANCE" class="java.lang.String"/>
+	<parameter name="ETF" class="java.lang.String"/>
+	<parameter name="EPFCOMP" class="java.lang.String"/>
+	<parameter name="TOTALCOMP" class="java.lang.String"/>
+	<parameter name="EPFNO" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="132" splitType="Stretch">
+			<staticText>
+				<reportElement x="68" y="15" width="202" height="26" uuid="cc37badd-e27e-4aaf-9439-74747045a754"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="134" y="64" width="146" height="20" uuid="485bae8e-f02f-45da-ad12-5344e8abe57b"/>
+				<textFieldExpression><![CDATA[$P{NAME}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="33" y="41" width="91" height="20" uuid="acc3e5e5-95b5-4d2f-b1a5-48d1e6d3b1a1"/>
+				<text><![CDATA[EPF No:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="89" width="91" height="20" uuid="9c1ee5ff-bf33-4ecb-a8c1-be68f93c897b"/>
+				<text><![CDATA[NIC Number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="112" width="91" height="20" uuid="1ef33f24-4759-4e5b-ae0f-14fe30931b8d"/>
+				<text><![CDATA[Month:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="134" y="88" width="146" height="20" uuid="3c7cb0f3-8db5-4192-978b-9037509dd2ca"/>
+				<textFieldExpression><![CDATA[$P{NIC}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="133" y="111" width="147" height="20" uuid="a010fb2a-4215-42b5-8866-5d4965f706e3"/>
+				<textFieldExpression><![CDATA[$P{MONTH}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="33" y="61" width="355" height="1" uuid="8ef0e7ce-880f-41c1-8e92-fa4c780e37aa"/>
+			</line>
+			<line>
+				<reportElement x="33" y="83" width="355" height="1" uuid="a8f37197-66c5-4f69-92a1-76624e5a2ac4"/>
+			</line>
+			<line>
+				<reportElement x="32" y="131" width="356" height="1" uuid="bfe849de-1c8b-44eb-822f-c92ba06be453"/>
+			</line>
+			<staticText>
+				<reportElement x="32" y="63" width="91" height="20" uuid="c32ebed9-4c9f-479e-a2ac-f9be97a69a2a"/>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="134" y="42" width="146" height="20" uuid="d1721fe2-7570-4b6f-b0d3-1c97cdbd1603"/>
+				<textFieldExpression><![CDATA[$P{EPFNO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="33" y="107" width="355" height="1" uuid="3da1b2c7-368b-4ec3-ae83-85c06449ba49"/>
+			</line>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="368" splitType="Stretch">
+			<staticText>
+				<reportElement x="31" y="33" width="91" height="20" uuid="933fbf20-6a64-46a8-96f4-014c9738c5ff"/>
+				<text><![CDATA[Budget Allowance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="59" width="91" height="20" uuid="829fb1be-9593-4a25-9892-02e2c20ec7b6"/>
+				<text><![CDATA[OverTime:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="86" width="91" height="20" uuid="289d6db5-ea5e-4bac-b335-822d41de3b36"/>
+				<text><![CDATA[Other Allowances:]]></text>
+			</staticText>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="191" y="86" width="88" height="20" uuid="49354a99-d1fe-43d3-bd0d-6fb41d801f0b"/>
+				<textFieldExpression><![CDATA[$P{OTHERAL}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="191" y="59" width="88" height="20" uuid="ac2f9118-f779-4690-8932-26275b50b5ce"/>
+				<textFieldExpression><![CDATA[$P{OT}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="191" y="33" width="88" height="20" uuid="439f6991-acf1-4ee5-b9c9-6f2bf4457526"/>
+				<textFieldExpression><![CDATA[$P{BUDGETAL}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="113" width="91" height="20" uuid="9fb3c68c-81f3-4cc6-9ece-f425805902ba"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Earning:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="139" width="149" height="20" uuid="d743acbb-ada4-4ab6-924e-92b63e894627"/>
+				<text><![CDATA[E.P.F Employee Contribution:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="165" width="149" height="20" uuid="d0000144-8096-4064-ad78-c5ae38fb3f2b"/>
+				<text><![CDATA[Uniform:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="191" width="149" height="20" uuid="ef192853-da89-4b75-bb79-1c3f51ecb4e4"/>
+				<text><![CDATA[Advance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="217" width="149" height="20" uuid="28dfe894-b008-486e-ad81-d2efb51f3370"/>
+				<text><![CDATA[Fine:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="243" width="149" height="20" uuid="40e495ad-03cb-4924-aa7f-537ce9190c05"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total Deduction:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="269" width="149" height="20" uuid="46360cd1-b143-4f2f-ad8c-29f5219d5b5b"/>
+				<textElement>
+					<font size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Net Salary:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="295" width="149" height="20" uuid="137964c8-39d6-4a99-b116-2c1c47ebabd8"/>
+				<text><![CDATA[E.P.F Company Contribution:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="321" width="149" height="20" uuid="4511ae7a-734b-4835-9041-7381afa9d441"/>
+				<text><![CDATA[ETF Employer:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="348" width="134" height="20" uuid="8bbd950b-cec6-4350-a955-b3717c8fada6"/>
+				<text><![CDATA[Total Company Contribution:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="191" y="139" width="88" height="20" uuid="9e116417-d190-409b-97a3-1284898bc46f"/>
+				<textFieldExpression><![CDATA[$P{EPFEMP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="113" width="88" height="20" uuid="f86e2660-4bd6-4715-8fad-d3ddc728d404"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="243" width="88" height="20" uuid="463447d7-2dda-4f19-a156-d8cbf7006a8f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{TOTALD}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="269" width="88" height="20" uuid="63690c57-fd01-4b47-a2c3-1a719629ef2f"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{NETSAL}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="191" y="165" width="88" height="20" uuid="06e41e3a-822f-46f5-8c37-86e85ad165a4"/>
+				<textFieldExpression><![CDATA[$P{UNIFORM}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="191" width="88" height="20" uuid="4b2952c0-e536-4446-bd74-97f33d89e058"/>
+				<textFieldExpression><![CDATA[$P{ADVANCE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="217" width="88" height="20" uuid="81104868-e880-4df4-ad11-d295fb306f74"/>
+				<textFieldExpression><![CDATA[$P{FINE}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="321" width="88" height="20" uuid="d210a9ef-6b89-4ffb-9c93-6000e947ca29"/>
+				<textFieldExpression><![CDATA[$P{ETF}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="295" width="88" height="20" uuid="fbdc9dc3-c194-44fd-83cc-4dc2890f6d4c"/>
+				<textFieldExpression><![CDATA[$P{EPFCOMP}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="192" y="348" width="88" height="20" uuid="b876fecf-34c5-4465-a350-c3be8dff6187"/>
+				<textFieldExpression><![CDATA[$P{TOTALCOMP}]]></textFieldExpression>
+			</textField>
+			<textField pattern="¤ #,##0.00">
+				<reportElement x="191" y="8" width="88" height="20" uuid="4823d098-e94d-4703-a293-0c07f5d32fa2"/>
+				<textFieldExpression><![CDATA[$P{BASIC}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="8" width="91" height="20" uuid="52e87cbf-b1e0-407b-ab74-2e065ef4f4a1"/>
+				<text><![CDATA[Basic Salary:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="181" y="0" width="1" height="368" uuid="3f4797c2-3eb9-41ee-9b8d-4230c88ab12d"/>
+			</line>
+		</band>
+	</columnHeader>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="138" y="29" width="70" height="13" uuid="713532ee-f574-43b5-842b-509f8d02800d"/>
+				<text><![CDATA[Vavuniya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="107" y="2" width="135" height="14" uuid="bee4e7f5-334d-4664-87b8-8aff4ae14540"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="123" y="16" width="104" height="13" uuid="1d850774-4961-48dc-b3f1-92db79334082"/>
+				<text><![CDATA[255B,Karappankadu,]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

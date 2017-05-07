@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="cd0b78c1-b12d-48ab-99d3-3ef5b40f717b">
+	<property name="ireport.zoom" value="1.6105100000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<subDataset name="Table Dataset 1" uuid="289ca646-794f-46bd-a3d8-00023daff897"/>
+	<parameter name="MONTH" class="java.lang.String"/>
+	<parameter name="CON" class="java.lang.String"/>
+	<parameter name="SUR" class="java.lang.String"/>
+	<parameter name="REM" class="java.lang.String"/>
+	<parameter name="BANK" class="java.lang.String"/>
+	<parameter name="BRANCH" class="java.lang.String"/>
+	<parameter name="CHECK" class="java.lang.String"/>
+	<field name="Employee Name" class="java.lang.String"/>
+	<field name="Nic Number" class="java.lang.String"/>
+	<field name="EPF Number" class="java.lang.String"/>
+	<field name="Total" class="java.lang.String"/>
+	<field name="Employee-Company" class="java.lang.String"/>
+	<field name="From Employee" class="java.lang.String"/>
+	<field name="Total Earning" class="java.lang.String"/>
+	<field name="Number" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="121" splitType="Stretch">
+			<staticText>
+				<reportElement x="197" y="0" width="10" height="20" uuid="c63eda5c-8289-49da-84ce-2cfd1f8bac9b"/>
+				<textElement>
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[C ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="5" width="132" height="20" uuid="416888b1-4bb2-45da-9a1d-dfd34944add9"/>
+				<text><![CDATA[form EPF Act no 15 of 1958]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="53" width="98" height="13" uuid="78ead63a-630d-46e6-a187-f23f466024a7"/>
+				<text><![CDATA[255B,Station Road,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-1" y="39" width="135" height="14" uuid="774613fe-dd6a-4e00-bb4c-930758a43528"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="79" width="51" height="13" uuid="48fade42-44d7-40b7-85d8-9e2a1033aec5"/>
+				<text><![CDATA[Vavuniya]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="66" width="70" height="13" uuid="9439f710-cdd8-474e-acc6-e0f0be502bd7"/>
+				<text><![CDATA[Kurumankadu,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="40" width="134" height="13" uuid="ac63951e-dd93-4962-a4a4-4909ec854f8e"/>
+				<text><![CDATA[E.P.F. Registration Number:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="56" width="134" height="13" uuid="f38d3bde-0159-4f4b-9834-9444ad94e496"/>
+				<text><![CDATA[Contribution for the month:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="74" width="134" height="13" uuid="bc2da14a-339c-4976-b387-6b2596f8f161"/>
+				<text><![CDATA[Constributions:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="91" width="134" height="13" uuid="533901a3-5f5b-414b-812b-4dc425896a94"/>
+				<text><![CDATA[Surcharges:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="197" y="108" width="134" height="13" uuid="cc2c4429-229c-412c-a01c-208da9c3bfdb"/>
+				<text><![CDATA[Total Remittance:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="341" y="41" width="134" height="13" uuid="f641c4d6-d1b9-4d29-a4b5-fa2ecbe278cc"/>
+				<text><![CDATA[1705/L]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="341" y="56" width="134" height="13" uuid="ac6dd4c7-3bb6-43b5-9ccf-442bb936088a"/>
+				<textFieldExpression><![CDATA[$P{MONTH}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="74" width="134" height="13" uuid="98be06fe-e37e-401e-81e0-d5cbc9a5439f"/>
+				<textFieldExpression><![CDATA[$P{CON}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="90" width="133" height="13" uuid="6acd083d-f5d0-40cb-98db-803d4bf83319"/>
+				<textFieldExpression><![CDATA[$P{SUR}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="341" y="107" width="133" height="13" uuid="2120ec1a-6316-4251-a07f-bb1cf4b83c4e"/>
+				<textFieldExpression><![CDATA[$P{REM}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="197" y="55" width="277" height="1" uuid="4295dbc9-6303-4a6e-b200-f1aebd91d33e"/>
+			</line>
+			<line>
+				<reportElement x="196" y="70" width="277" height="1" uuid="f3045697-04b5-4c7a-924b-36e06c8e296f"/>
+			</line>
+			<line>
+				<reportElement x="198" y="89" width="277" height="1" uuid="f4760ae8-9e47-4183-9f36-d512d626ec52"/>
+			</line>
+			<line>
+				<reportElement x="198" y="104" width="277" height="1" uuid="61c365d8-eb1f-444b-bc49-bc065e96dd0a"/>
+			</line>
+			<line>
+				<reportElement x="331" y="41" width="1" height="79" uuid="69059507-6ba5-4a07-ad27-77cafb71a852"/>
+			</line>
+			<line>
+				<reportElement x="196" y="41" width="279" height="1" uuid="83e1bd83-46ef-486e-a2cc-76925c9e2df2"/>
+			</line>
+			<line>
+				<reportElement x="475" y="41" width="1" height="80" uuid="ca835176-d67d-42f6-91f9-2e535a3dc0a2"/>
+			</line>
+			<line>
+				<reportElement x="195" y="40" width="1" height="81" uuid="4782cc4c-52c0-4c43-8069-9981101a09f2"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement x="197" y="13" width="66" height="18" uuid="089622c1-b9ad-404e-a0ec-c4de1a7bd638"/>
+				<text><![CDATA[Check no. No-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="44" width="109" height="18" uuid="416028fd-77bc-42ca-95c5-6b3be6841cdc"/>
+				<text><![CDATA[Bank Name & Branch:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="269" y="13" width="100" height="20" uuid="baa33486-30f1-4a33-9c75-7431c3e9b7c5"/>
+				<textFieldExpression><![CDATA[$P{CHECK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="109" y="44" width="116" height="18" uuid="c71e920b-8103-4722-b50e-a406a9dce7e9"/>
+				<textFieldExpression><![CDATA[$P{BANK}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="225" y="44" width="144" height="18" uuid="e1ce9876-6777-43d2-9e8b-c89fab02b451"/>
+				<textFieldExpression><![CDATA[$P{BRANCH}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="196" y="0" width="279" height="1" uuid="0487d000-6a9b-47f3-b1c0-ddabe28a7431"/>
+			</line>
+			<staticText>
+				<reportElement x="30" y="66" width="79" height="20" uuid="2efe78ae-2f43-4d30-941e-b578b4c4c056"/>
+				<text><![CDATA[Employee Name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="110" y="66" width="69" height="20" uuid="7ab0485b-596f-4fc3-aaeb-e64b62321469"/>
+				<text><![CDATA[Nic Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="179" y="66" width="58" height="20" uuid="675809e2-7754-422f-99cf-c4ac75f04483"/>
+				<text><![CDATA[EPF Number]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="237" y="66" width="79" height="20" uuid="07388747-58f0-4a0e-b2c1-1ded7483236f"/>
+				<text><![CDATA[Total]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="66" width="79" height="20" uuid="f437a579-366d-4a15-8343-5164ff60ec35"/>
+				<text><![CDATA[Comp-Emp]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="394" y="66" width="79" height="20" uuid="3fbe2246-4e52-4cd5-acbc-4871255130aa"/>
+				<text><![CDATA[From Employee]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="474" y="66" width="78" height="20" uuid="18dfe1db-da53-4447-b861-eae869daf238"/>
+				<text><![CDATA[Total Earning]]></text>
+			</staticText>
+			<line>
+				<reportElement x="1" y="86" width="552" height="1" uuid="c226edd4-0522-47a2-8ea2-9a93cf03cfe2"/>
+			</line>
+			<line>
+				<reportElement x="1" y="65" width="553" height="1" uuid="672f2bf1-dbd8-43d9-aa60-a02c57a6c178"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="65" width="1" height="21" uuid="a3c5625a-bdfd-4cc0-bbe4-850a53c936a1"/>
+			</line>
+			<line>
+				<reportElement x="553" y="66" width="1" height="21" uuid="e067113a-d9fb-4224-9cff-b70f472d2715"/>
+			</line>
+			<staticText>
+				<reportElement x="1" y="67" width="28" height="20" uuid="d2a05a09-a110-487c-a3da-d0405e6983e0"/>
+				<text><![CDATA[No.]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<textField>
+				<reportElement x="29" y="0" width="79" height="20" uuid="351f8355-a376-459b-91cb-b335b5a89c94"/>
+				<textFieldExpression><![CDATA[$F{Employee Name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="179" y="0" width="58" height="20" uuid="00afa5d5-a156-464e-b468-495539ee35e6"/>
+				<textFieldExpression><![CDATA[$F{EPF Number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="237" y="0" width="79" height="20" uuid="e1c03063-97c7-4c39-bd9d-dd6ba31f0664"/>
+				<textFieldExpression><![CDATA[$F{Total}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="79" height="20" uuid="6e2eaf81-69a0-4764-aa3f-e1e0fd91a59f"/>
+				<textFieldExpression><![CDATA[$F{Employee-Company}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="395" y="0" width="79" height="20" uuid="bc43d54d-5b27-47e3-8e2c-33c9171bb402"/>
+				<textFieldExpression><![CDATA[$F{From Employee}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="476" y="0" width="77" height="20" uuid="99aba70c-c30b-44f4-989e-489f90d1e8f2"/>
+				<textFieldExpression><![CDATA[$F{Total Earning}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="474" y="0" width="1" height="20" uuid="9605558e-0e89-4233-9cb7-feb44529f157"/>
+			</line>
+			<line>
+				<reportElement x="393" y="0" width="1" height="20" uuid="ce860fb5-2522-40c0-98f1-4b3d4ae50e70"/>
+			</line>
+			<line>
+				<reportElement x="316" y="0" width="1" height="20" uuid="ea3587ab-220e-4e05-b51d-56ce70f73611"/>
+			</line>
+			<line>
+				<reportElement x="236" y="0" width="1" height="20" uuid="ba455a44-59ab-48ae-b143-d90d697277d6"/>
+			</line>
+			<line>
+				<reportElement x="109" y="0" width="1" height="20" uuid="90545ab9-9ea8-4b9d-84cb-047937f80f2e"/>
+			</line>
+			<line>
+				<reportElement x="552" y="0" width="1" height="20" uuid="2092ba34-3c88-40be-8a6a-49ff715cf0e2"/>
+			</line>
+			<line>
+				<reportElement x="-1" y="0" width="1" height="20" uuid="e242c155-85eb-4b77-a504-1988a8327d7e"/>
+			</line>
+			<line>
+				<reportElement x="177" y="0" width="1" height="20" uuid="155af92a-e3db-4b8f-94c4-b32d90ee8ef2"/>
+			</line>
+			<textField>
+				<reportElement x="110" y="0" width="68" height="20" uuid="5755460c-a327-4533-aaeb-ba6b7fcbfb61"/>
+				<textFieldExpression><![CDATA[$F{Nic Number}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="0" width="29" height="20" uuid="db8cc40e-22d4-44ef-b163-d5a48409748f"/>
+				<textFieldExpression><![CDATA[$F{Number}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="42" splitType="Stretch">
+			<staticText>
+				<reportElement x="228" y="14" width="98" height="13" uuid="bb4512c9-bba2-436e-af8f-e073852c4b8a"/>
+				<text><![CDATA[255B,Karappankadu,]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="210" y="0" width="135" height="14" uuid="8c2a1272-1bb1-48f5-8f8a-b1f30de998c4"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[Anchor Security Services]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="27" width="70" height="13" uuid="ac1fa997-9a98-482c-8987-6411fb9ad644"/>
+				<text><![CDATA[Vavuniya]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>
