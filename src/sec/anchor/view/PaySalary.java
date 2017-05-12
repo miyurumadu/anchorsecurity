@@ -7,6 +7,7 @@ package sec.anchor.view;
 
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,7 +49,8 @@ public class PaySalary extends javax.swing.JPanel {
     String[] nic;
     double totaldedction;
     int paysheetType = 0;
-    
+    boolean isPayed;
+
     public PaySalary() {
         try {
             initComponents();
@@ -62,6 +64,7 @@ public class PaySalary extends javax.swing.JPanel {
             uniformText.setText("0.00");
             fineText.setText("0.00");
             netSalary.setText("0.00");
+            extraText.setText("0.00");
             payButton.setEnabled(false);
             yesCheckBox.setSelected(false);
             Date d = new Date();
@@ -106,6 +109,8 @@ public class PaySalary extends javax.swing.JPanel {
         fineText = new javax.swing.JTextField();
         jLabel29 = new javax.swing.JLabel();
         yesCheckBox = new javax.swing.JCheckBox();
+        jLabel31 = new javax.swing.JLabel();
+        extraText = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
@@ -242,14 +247,19 @@ public class PaySalary extends javax.swing.JPanel {
         yesCheckBox.setFont(new java.awt.Font("Source Sans Pro Light", 0, 16)); // NOI18N
         yesCheckBox.setText("Yes");
 
+        jLabel31.setFont(new java.awt.Font("Source Sans Pro", 0, 16)); // NOI18N
+        jLabel31.setText("Extra Payment:");
+
+        extraText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                extraTextActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jSeparator1))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -274,36 +284,52 @@ public class PaySalary extends javax.swing.JPanel {
                                         .addComponent(yesCheckBox)
                                         .addGap(0, 0, Short.MAX_VALUE)))))
                         .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jSeparator1))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(totalSalaryText))
+                                .addComponent(workhoursText, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGap(18, 18, 18)
+                                    .addComponent(totalSalaryText))
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(otText, javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(otherAlText, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.LEADING))
+                                .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(otText, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(workhoursText, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(datetopicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(datefrompicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(otherAlText, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(extraText)))
                         .addGap(0, 42, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(nicCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addComponent(nicCombo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 118, Short.MAX_VALUE)
+                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(datetopicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 215, Short.MAX_VALUE)
+                            .addComponent(datefrompicker, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(nicCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -316,6 +342,10 @@ public class PaySalary extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jLabel6))
                     .addComponent(datetopicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel31)
+                    .addComponent(extraText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -336,7 +366,7 @@ public class PaySalary extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel29)
                     .addComponent(yesCheckBox))
@@ -547,27 +577,23 @@ public class PaySalary extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
-                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addressLabel)
-                            .addComponent(nameLabel)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(etflabel)
-                            .addComponent(epflabel)
-                            .addComponent(contactLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(epfDeduction))))
-                .addContainerGap(52, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 73, Short.MAX_VALUE)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel30, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel26, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel25, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nameLabel)
+                    .addComponent(addressLabel)
+                    .addComponent(contactLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(epflabel)
+                    .addComponent(etflabel)
+                    .addComponent(epfDeduction))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -596,7 +622,7 @@ public class PaySalary extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel30)
                     .addComponent(epfDeduction))
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         finalizeButton.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -641,8 +667,8 @@ public class PaySalary extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -674,6 +700,7 @@ public class PaySalary extends javax.swing.JPanel {
         yesCheckBox.setSelected(false);
         searchEmp();
         searchSalaryCons();
+        isPayed = false;
     }//GEN-LAST:event_nicComboActionPerformed
 
     private void datefrompickerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_datefrompickerActionPerformed
@@ -693,31 +720,36 @@ public class PaySalary extends javax.swing.JPanel {
     }//GEN-LAST:event_otTextActionPerformed
 
     private void workhoursTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_workhoursTextActionPerformed
-        totalEarning = Double.parseDouble(workhoursText.getText()) * searchSalaryCons.getWorkrate();
-        fullBasic = searchSalaryCons.getBasic_salary() + searchSalaryCons.getBudget_al();
-        if (totalEarning > fullBasic) {
-            totalSalary = totalEarning;
-            double allowances = totalSalary - (fullBasic);
-            if (allowances > (searchSalaryCons.getOtlimit() * 75)) {
-                otText.setText((searchSalaryCons.getOtlimit() * 75) + "");
-                otherAlText.setText((allowances - searchSalaryCons.getOtlimit() * 75) + "");
-            } else {
-                otText.setText(allowances + "");
-                otherAlText.setText(0.00 + "");
-            }
-            totalSalaryText.setText(totalSalary + "");
-            netSalary.setText(totalSalary + "");
-            
+
+        isPayed();
+        if (isPayed) {
         } else {
-            totalSalary = totalEarning;
-            otText.setText(totalSalary + "");
-            otText.setText(0.00 + "");
-            otherAlText.setText(0.00 + "");
-            totalSalaryText.setText(totalSalary + "");
-            netSalary.setText(totalSalary + "");
-            //paysheet2();
+            totalEarning = Double.parseDouble(extraText.getText()) + Double.parseDouble(workhoursText.getText()) * searchSalaryCons.getWorkrate();
+            fullBasic = searchSalaryCons.getBasic_salary() + searchSalaryCons.getBudget_al();
+            if (totalEarning > fullBasic) {
+                totalSalary = totalEarning;
+                double allowances = totalSalary - (fullBasic);
+                if (allowances > (searchSalaryCons.getOtlimit() * 75)) {
+                    otText.setText((searchSalaryCons.getOtlimit() * 75) + "");
+                    otherAlText.setText((allowances - searchSalaryCons.getOtlimit() * 75) + "");
+                } else {
+                    otText.setText(allowances + "");
+                    otherAlText.setText(0.00 + "");
+                }
+                totalSalaryText.setText(totalSalary + "");
+                netSalary.setText(totalSalary + "");
+
+            } else {
+                totalSalary = totalEarning;
+                otText.setText(totalSalary + "");
+                otText.setText(0.00 + "");
+                otherAlText.setText(0.00 + "");
+                totalSalaryText.setText(totalSalary + "");
+                netSalary.setText(totalSalary + "");
+                //paysheet2();
+            }
+            paysheetType = 0;
         }
-        paysheetType = 0;
     }//GEN-LAST:event_workhoursTextActionPerformed
 
     private void fineTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fineTextActionPerformed
@@ -741,7 +773,7 @@ public class PaySalary extends javax.swing.JPanel {
         if (totalEarning > fullBasic) {
             paysheetType = 1;
             paysheet1();
-            
+
         } else {
             paysheetType = 2;
             paysheet2();
@@ -764,9 +796,9 @@ public class PaySalary extends javax.swing.JPanel {
                     paysheet2();
                 }
                 emptyFields();
-                payButton.setEnabled(false);
+                resetButton();
                 nicCombo.requestFocus();
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Could Not Pay the salary", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -789,12 +821,12 @@ public class PaySalary extends javax.swing.JPanel {
     }//GEN-LAST:event_workhoursTextKeyPressed
 
     private void resetButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetButtonActionPerformed
-        advanceText.setEditable(true);
-        fineText.setEditable(true);
-        uniformText.setEditable(true);
-        netSalary.setText(totalSalaryText.getText());
-        payButton.setEnabled(false);
+        resetButton();
     }//GEN-LAST:event_resetButtonActionPerformed
+
+    private void extraTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_extraTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_extraTextActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -814,6 +846,7 @@ public class PaySalary extends javax.swing.JPanel {
     private javax.swing.JTextField etfEmpamountText;
     private javax.swing.JTextField etfempText;
     private javax.swing.JLabel etflabel;
+    private javax.swing.JTextField extraText;
     private javax.swing.JButton finalizeButton;
     private javax.swing.JTextField fineText;
     private javax.swing.JLabel jLabel1;
@@ -840,6 +873,7 @@ public class PaySalary extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -872,7 +906,7 @@ public class PaySalary extends javax.swing.JPanel {
             nicCombo.addItem(e);
         }
     }
-    
+
     private void searchEmp() {
         if (nicCombo.getSelectedItem() != null) {
             try {
@@ -884,25 +918,25 @@ public class PaySalary extends javax.swing.JPanel {
                     contactLabel.setText(employee.getContactno() + "");
                     etflabel.setText(employee.getEtfno());
                     epflabel.setText(employee.getEpfno());
-                   
+
                 } else {
                     // JOptionPane.showMessageDialog(this, "No Employee Found! Please add new one");
                 }
-                
+
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(UpdateEmployee.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }
-    
+
     private void searchSalaryCons() {
         if (nicCombo.getSelectedItem() != null) {
             try {
                 nic = (nicCombo.getSelectedItem() + "").split("-");
                 searchSalaryCons = SalaryConstController.searchSalaryCons(nic[nic.length - 1]);
-                
+
                 if (searchSalaryCons != null) {
-                    
+
                     yesCheckBox.setEnabled(true);
                     basicSalaryText.setText(searchSalaryCons.getBasic_salary() + "");
                     System.out.println(searchSalaryCons.getBasic_salary() + "");
@@ -921,8 +955,8 @@ public class PaySalary extends javax.swing.JPanel {
                     epfDeduction.setText((searchSalaryCons.isDeduction()) + "");
                     if (searchSalaryCons.isDeduction()) {
                         yesCheckBox.setSelected(true);
-                    }else{
-                    yesCheckBox.setEnabled(false);
+                    } else {
+                        yesCheckBox.setEnabled(false);
                     }
                 } else {
                     // JOptionPane.showMessageDialog(this, "No Employee Found! Please add new one");
@@ -930,10 +964,10 @@ public class PaySalary extends javax.swing.JPanel {
             } catch (ClassNotFoundException | SQLException ex) {
                 Logger.getLogger(PaySalary.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
+
         }
     }
-    
+
     private void paysheet1() {
         String reportSource = "/sec/anchor/reports/PaySheet.jrxml";
         InputStream is = null;
@@ -953,13 +987,13 @@ public class PaySalary extends javax.swing.JPanel {
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-YYYY");
             String date = simpleDateFormat.format(datefrompicker.getDate());
             param.put("MONTH", date);
-            
+
             param.put("BASIC", basicSalaryText.getText());
             param.put("BUDGETAL", budgetText.getText());
             param.put("OT", otText.getText());
             param.put("OTHERAL", otherAlText.getText());
             param.put("TOTAL", totalSalaryText.getText());
-            
+
             param.put("UNIFORM", uniformText.getText());
             param.put("ADVANCE", advanceText.getText());
             param.put("FINE", fineText.getText());
@@ -985,7 +1019,7 @@ public class PaySalary extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void paysheet2() {
         String reportSource = "/sec/anchor/reports/PaySheet.jrxml";
         InputStream is = null;
@@ -1030,7 +1064,7 @@ public class PaySalary extends javax.swing.JPanel {
             }
         }
     }
-    
+
     private void emptyFields() {
         nameLabel.setText(null);
         addressLabel.setText(null);
@@ -1053,6 +1087,54 @@ public class PaySalary extends javax.swing.JPanel {
         datetopicker.setDate(null);
         nicCombo.setSelectedItem(null);
         epfDeduction.setText(null);
-        
+        extraText.setText("0.00");
+    }
+
+    private void isPayed() {
+
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM-YYYY");
+        String date = simpleDateFormat.format(datefrompicker.getDate());
+        String mon = date.split("-")[0];
+        String year = date.split("-")[1];
+        String month = getMonthForInt(Integer.parseInt(mon) - 1);
+        try {
+            String paiddate = SalaryController.isSalaryPayed(nic[nic.length - 1], month, year);
+            System.out.println(paiddate);
+            if (paiddate.equals("")) {
+                isPayed = false;
+            } else {
+                JOptionPane.showMessageDialog(this, nic[0] + " Already paid for " + month + "-" + year + " on " + paiddate, "Alert", JOptionPane.WARNING_MESSAGE);
+                datefrompicker.setDate(null);
+                datetopicker.setDate(null);
+                nicCombo.setSelectedItem(null);
+                workhoursText.setText(null);
+                otText.setText(null);
+                otherAlText.setText(null);
+                totalSalaryText.setText(null);
+                netSalary.setText("0.00");
+                nicCombo.requestFocus();
+                isPayed = true;
+            }
+        } catch (ClassNotFoundException | SQLException ex) {
+            Logger.getLogger(PaySalary.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    String getMonthForInt(int num) {
+        String month = "wrong";
+        DateFormatSymbols dfs = new DateFormatSymbols();
+        String[] months = dfs.getMonths();
+        if (num >= 0 && num <= 11) {
+            month = months[num];
+        }
+        return month;
+    }
+
+    private void resetButton() {
+        advanceText.setEditable(true);
+        fineText.setEditable(true);
+        uniformText.setEditable(true);
+        netSalary.setText(totalSalaryText.getText());
+        payButton.setEnabled(false);
     }
 }

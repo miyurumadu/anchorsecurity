@@ -327,7 +327,7 @@ public class MainFrame extends javax.swing.JFrame {
         salaryConfigMenu.setText("Salary");
 
         paySalaryMenu.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
-        paySalaryMenu.setText("Pay");
+        paySalaryMenu.setText("Pay Staff");
         paySalaryMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 paySalaryMenuActionPerformed(evt);
@@ -565,11 +565,11 @@ public class MainFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_LogoutMenuActionPerformed
 
     private void paySalaryMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_paySalaryMenuActionPerformed
-        PaySalary paySalary1 = new PaySalary();
+        StaffPay staffPay = new StaffPay();
         System.gc();
-        paySalary1.setSize(dataPanel.getSize());
+        staffPay.setSize(dataPanel.getSize());
         dataPanel.removeAll();
-        dataPanel.add(paySalary1);
+        dataPanel.add(staffPay);
         dataPanel.repaint();
     }//GEN-LAST:event_paySalaryMenuActionPerformed
 

@@ -21,6 +21,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.view.JasperViewer;
+import org.jdesktop.swingx.autocomplete.AutoCompleteDecorator;
 import sec.anchor.controller.EmployeeController;
 import sec.anchor.controller.SalaryConstController;
 import sec.anchor.controller.SalaryController;
@@ -40,6 +41,7 @@ public class PayedSalary extends javax.swing.JPanel {
     Salary viewAllSalarieswithNIC;
     int getSelection;
     String nicno;
+    ArrayList<Salary> getAllSalaries;
 
     public PayedSalary() {
         initComponents();
@@ -154,18 +156,18 @@ public class PayedSalary extends javax.swing.JPanel {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(monthCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 177, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(yearCombo, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addGap(18, 18, 18)
                 .addComponent(deleteAllButton, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteSingle, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(paySheetButton)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -199,16 +201,20 @@ public class PayedSalary extends javax.swing.JPanel {
 
     private void deleteAllButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteAllButtonActionPerformed
         int res;
-        try {
-            res = SalaryController.deleteSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
-            if (res > 0) {
-                JOptionPane.showMessageDialog(this, "Salary Records Cleared in " + monthCombo.getSelectedItem() + "" + "-" + yearCombo.getSelectedItem() + "");
-                viewPayedSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
-            } else {
-                JOptionPane.showMessageDialog(this, "Cannot Clear Salary Records ", "Error", JOptionPane.ERROR_MESSAGE);
+        if (JOptionPane.showConfirmDialog(this, "This will delete all employees' salary values in " + monthCombo.getSelectedItem() + "-" + yearCombo.getSelectedItem() + "", "Warning", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.CANCEL_OPTION) {
+
+        } else {
+            try {
+                res = SalaryController.deleteSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
+                if (res > 0) {
+                    JOptionPane.showMessageDialog(this, "Salary Records Cleared in " + monthCombo.getSelectedItem() + "" + "-" + yearCombo.getSelectedItem() + "");
+                    viewPayedSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cannot Clear Salary Records ", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(PayedSalary.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(PayedSalary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_deleteAllButtonActionPerformed
 
@@ -237,19 +243,23 @@ public class PayedSalary extends javax.swing.JPanel {
     }//GEN-LAST:event_paySheetButtonActionPerformed
 
     private void deleteSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteSingleActionPerformed
-       int selected= payedSalariesTable.getSelectedRow();
-       String nic = payedSalariesTable.getValueAt(selected, 1).toString();
+        int selected = payedSalariesTable.getSelectedRow();
+        String nic = payedSalariesTable.getValueAt(selected, 1).toString();
         int res;
-        try {
-            res = SalaryController.deleteSingleSalary(nic, monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
-            if (res > 0) {
-                JOptionPane.showMessageDialog(this, "Salary Record removed  for " + nic + " of " + monthCombo.getSelectedItem() + "" + "-" + yearCombo.getSelectedItem() + "");
-                viewPayedSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
-            } else {
-                JOptionPane.showMessageDialog(this, "Cannot Clear Salary Record ", "Error", JOptionPane.ERROR_MESSAGE);
+        if (JOptionPane.showConfirmDialog(this, "Delete,Are you sure?", "Warning", JOptionPane.OK_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE) == JOptionPane.CANCEL_OPTION) {
+
+        } else {
+            try {
+                res = SalaryController.deleteSingleSalary(nic, monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
+                if (res > 0) {
+                    JOptionPane.showMessageDialog(this, "Salary Record removed  for " + nic + " of " + monthCombo.getSelectedItem() + "" + "-" + yearCombo.getSelectedItem() + "");
+                    viewPayedSalaries(monthCombo.getSelectedItem() + "", yearCombo.getSelectedItem() + "");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Cannot Clear Salary Record ", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            } catch (ClassNotFoundException | SQLException ex) {
+                Logger.getLogger(PayedSalary.class.getName()).log(Level.SEVERE, null, ex);
             }
-        } catch (ClassNotFoundException | SQLException ex) {
-            Logger.getLogger(PayedSalary.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_deleteSingleActionPerformed
 
@@ -272,7 +282,7 @@ public class PayedSalary extends javax.swing.JPanel {
 
         try {
 
-            ArrayList<Salary> getAllSalaries = SalaryController.viewAllSalaries(month, year);
+            getAllSalaries = SalaryController.viewAllSalaries(month, year);
             SalaryCons searchBasicSal;
             dtm.setRowCount(0);
             int number = 0;
@@ -375,4 +385,5 @@ public class PayedSalary extends javax.swing.JPanel {
             }
         }
     }
+
 }

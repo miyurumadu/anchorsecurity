@@ -538,7 +538,7 @@ public class AddEmployee extends javax.swing.JPanel {
         if (!nicText.getText().isEmpty()) {
             String nic = nicText.getText();
             int caretPosition = nicText.getCaretPosition();
-            if (!nic.matches("[0-9]{0,11}[vVxX]?")) {
+            if (!nic.matches("[0-9]{0,12}[vVxX]?")) {
                 nicText.setText(nic.substring(0, caretPosition - 1) + nic.substring(caretPosition));
                 nicText.setCaretPosition(caretPosition - 1);
 

@@ -183,4 +183,10 @@ public class Salary {
         this.payeddate = payeddate;
     }
 
+    @Override
+    public String toString() {
+        return nicnumber ;
+    }
+    
+
 }

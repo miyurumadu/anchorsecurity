@@ -353,7 +353,8 @@ public class UpdateEmployee extends javax.swing.JPanel {
             int res = EmployeeController.updateEmployee(employee);
             if (res > 0) {
                 JOptionPane.showMessageDialog(this, "Employee Updated");
-               fillNicComboBox();
+                emptyFields();
+                fillNicComboBox();
             } else {
                 JOptionPane.showMessageDialog(this, "Cannot Execute update", "Error", JOptionPane.ERROR_MESSAGE);
             }
@@ -363,7 +364,7 @@ public class UpdateEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_updateButtonActionPerformed
 
     private void contactTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_contactTextKeyReleased
-       String txt = contactText.getText();
+        String txt = contactText.getText();
         int caretPosition = contactText.getCaretPosition();
         if (!txt.matches("^[0-9]{0,10}$")) {
             contactText.setText(txt.substring(0, caretPosition - 1) + txt.substring(caretPosition));
@@ -372,7 +373,7 @@ public class UpdateEmployee extends javax.swing.JPanel {
     }//GEN-LAST:event_contactTextKeyReleased
 
     private void accTextKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_accTextKeyReleased
-       String txt = accText.getText();
+        String txt = accText.getText();
         int caretPosition = accText.getCaretPosition();
         if (!txt.matches("^[0-9]{0,20}$")) {
             accText.setText(txt.substring(0, caretPosition - 1) + txt.substring(caretPosition));

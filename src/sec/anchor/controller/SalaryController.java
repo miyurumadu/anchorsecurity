@@ -122,4 +122,16 @@ public class SalaryController {
         int res = stm.executeUpdate(sql);
         return res;
     }
+     
+     public static String isSalaryPayed(String nic,String month, String year) throws ClassNotFoundException, SQLException {
+        String sql = "select payeddate from salary where nicnumber='" + nic + "' and monthname(datefrom)='" + month + "' and year(datefrom)='" + year + "'";
+        Connection connection = DBConnection.getInstance().getConnection();
+        Statement stm = connection.createStatement();
+        ResultSet rst = stm.executeQuery(sql);
+        String date="";
+        while (rst.next()) {
+            date = rst.getString("payeddate");
+        }
+        return date;
+    }
 }
